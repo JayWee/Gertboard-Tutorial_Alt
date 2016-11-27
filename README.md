@@ -24,9 +24,9 @@ Wir haben nun das Program [Win32DiskImager](http://sourceforge.net/projects/win3
 Anschließend haben wir es mit einem Mac installiert: Als erstes haben wir sichergestellt, dass die SD-Karte im Format MS-DOS (FAT) formatiert ist:  Dafür nutzten wir das Festplattendienstprogramm. Dort klickt man auf die SD-Karte an der linken Seite: Wichtig ist das man auf die obere klickt, nicht die untere.    
 Jetzt wählt man aus der oberen Leiste Löschen aus und dann einen Namen (Ohne Titel), das Format (MS-DOS-Dateisytem (FAT)), und das Schema (GUID). Nun klickt man auf Löschen. 
 Jetzt merken wir uns die Zahl die unten rechts im Feld Gerät steht diskx.
-Anschließend öffnen wir das Terminal (Programme -> Terminal) und geben den Befehl: sudo dd bs=1m if=path_of_your_image.img of=/dev/rdiskx ein.
-Statt path_of_your_image.img geben wir den Pfad der IMG Datei ein. Diesen können wir aus dem Finder kopiert. Dafür wählen wir die IMG-Datei aus und rechts-klicken auf die Datei und wählen Informationen aus. Für x setzen wir die Zahl aus dem Festpalttendienstprogramm ein und führen den Befehl aus. 
-Schlägt der Befehl fehl, kann man statt rdisk auch nur disk verwenden.
+Anschließend öffnen wir das Terminal (Programme -> Terminal) und geben den Befehl: `sudo dd bs=1m if=path_of_your_image.img of=/dev/rdiskx` ein.
+Statt `path_of_your_image.img` geben wir den Pfad der IMG Datei ein. Diesen können wir aus dem Finder kopiert. Dafür wählen wir die IMG-Datei aus und rechts-klicken auf die Datei und wählen Informationen aus. Für *x* setzen wir die Zahl aus dem Festpalttendienstprogramm ein und führen den Befehl aus. 
+Schlägt der Befehl fehl, kann man statt `rdisk` auch nur `disk` verwenden.
 Ist der Befehl ausgeführt, kann die SD-Karte ausgeworfen werden und wir stecken sie in den Pi. 
 
 ## Der erste Start
