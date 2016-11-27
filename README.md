@@ -3,7 +3,9 @@
 1. **[Einleitung](#1)**  
 1. **[Inbetriebnahme des Pi](#2)**  
 1. **[Erste Programme mit Python](#3)**  
-1. **[Gertboard](#4)**  
+1. **[Gertboard](#4)**
+  1. [Einführung](#5)
+  1. [Nutzung der Buffer](#6)
 
 ## 1. Einleitung <a name="1"> </a>
 Der Raspberry Pi ist ein Mini-Computer, der vieles von dem, was ein normaler Computer auch kann: Er hat eine graphische Oberfläche1, einen Internetbrowser und andere Programme. 
@@ -192,3 +194,37 @@ while (count < 3):
         counter +=1  
 GPIO.cleanup()
 ```
+
+## 4. Gertboard <a name="4"></a>
+![Gertboard Real](https://github.com/JayWee/Gertboard-Tutorial/blob/master/gertboard_real.png)
+### Einführung <a name="5"></a>
+Das Gertboard von element14 ist ein Erweiterungsboard für alle Versionen des Raspberry Pi. Das Gertboard ist für 26 GPIO-Pins gemacht, passt also perfekt auf die Pins des Raspberry Pi 1 und anderer Modelle des Models A. Bei den B Medelen dagegen sind auf dem Pi 14 Pins mehr, als mit dem Gertboard verbunden werden können.  
+Das Gertboard ist mit s. g. Buffern ausgestattet. Diese schützen den Pi bei der benutzung der GPIO-Pins vor Kurzschlüssen. Weiterhin sind auf dem Gertboard noch anschlüsse für eine externe Energiequelle, um Motoren, die eine höhere Spannung brauchen als der Pi liefern kann (3,3V bzw. 5V), mit dem Pi zu betreiben.  
+
+#### Aufbau
+![Gertboard Real Blocks](https://github.com/JayWee/Gertboard-Tutorial/blob/master/gertboard_real_blocks.png)
+Wie oben in der Graphik zu erkennen ist, ist das Gertboard in sechs Blöcke unterteilt. Diese haben keine Verbindung untereinander.  
+Für dieses Tutoral sind nur der schwarze und der rote Block von Relevanz.
+Der schwarz umrandete Block umfasst die Verbindung zum Pi (auf der Rückseite) und Pins, die direkt mit den GPIO-Pins auf dem Pi verbunden sind.  
+Der rote Block enthält die oben schon erwähnten Buffer, Pins als Ausgänge von den Buffern, Pins zum Einstellen von Input und Output(dies muss im Programm für den Pi selber auch noch mal gemacht werden), 12 LEDs und 3 Druckknöpfe. 
+Zusätzlich zu diesen Blöcken gibt es noch die Dauerstrom-Pins (3,3V bzw. 5V).
+
+##### Aufbau der einzelnen Blöcke
+Die Platine des Gertboards ist weiß beschriftet. Auf der folgenden Schematik sind nur die Beschriftung und die einzelnen Pins dargestellt:  
+![Gertboard Schematisch](https://github.com/JayWee/Gertboard-Tutorial/blob/master/gertboard_shematic.png)  
+Blöcke von mehreren Pins sind (Ausgenommen derer in dem Buffer-Block) mit *Jn* (n ist eine natürliche Zahl) beschriftet. Alle Chips auf der Platine sind mit *Un* beschriftet.  
+Ganz unten liegt J1. Dies ist die Verbindung zum Pi. Knapp dadrüber liegt J2. Die Pins in diesem Block sind direkt mit den GPIO-Pins des Pi verbunden. 
+Weiter wichtig für dieses Tutorial sind die Chips U3-U5. Dies sind die oben genannten Buffer. Ober- und Unterhalb dieser liegen jeweils 8 Pins. Diese sind zur Bestimmung des Modus (Input/Output) gedacht und deshalb mit *out* oder *in* beschrieben. Der Block J3 ist der Eingang zu den Buffern. Die Pins beschriftet mit BUF1-12 sind die Input-Eingänge der Buffer. Zusätzlich zu diesen Input-Pins ist an jeden Buffer-Pin noch eine LED geschaltet und dies ersten drei Buffer Pins (B1-3) sind mit den drei Knöpfen noch verbunden.
+Die eben schon erwähnten Dauerstrom-Pins befinden sich in den kleine Böcken J7, J27 und oben links in der Ecke nur 3V3 beschriftet. 
+
+### Nutzung der Buffer <a name="6"></a>
+
+##### Verbindung mit dem Pi
+Um das Gertboard mit dem Raspberry Pi zu verbinden, muss das Gertboard auf die linken (Der Pi ist so gedreht, dass die Pins oben links liegen) 26 GPIO-Pins gesteckt werden. Bei B Modelen des Pi sind somit die vierzehn rechten Pins nicht mit dem Gertboard verbunden und auf sie kann somit nicht auf dem Gertboard zugegriffen werden. Damit die Buffer-Ausgänge auch Signale senden können müssen bei J7 (3,3V Dauerstrom) zwei der drei Pins miteinander Verbunden werden (am besten mit einem [Jumper](https://github.com/JayWee/Gertboard-Tutorial/blob/master/Shunt-Jumpers2-1383815114.jpg)).    <!---(Für die, die es interessiert: [Warum hier](#10)) -->  
+
+#### Arbeiten mit LEDs über die Buffer
+Um auf die LEDs zuzugreifen muss erstmal eine Verbindung zwischen den GPIO-Pins (J2) und den Buffer-Eingangs-Pins (J3) hergestellt werden. Jetzt sollten alle LEDs rot leuchten.  
+Dann muss der Hardware gesagt werden wie welcher Bufferpin genutzt werden soll (Input/Output). Dafür müssen bei einem Output die beiden Pins, die mit *Bx out* (x ist die Nummer des gewählten Buffereingangs) beschriftet sind, am besten mit einem Jumper verbunden werden, bei einem Input mit *Bx in*. Beim aufstecken der Jumper, sollte die entsprechende LED ausgehen. Falls nicht, sollte dies spätestens beim starten des Programms passieren.
+
+#### Arbeiten mit externen Geräten über die Buffer
+Wenn mit externen Geräten oder LEDs gearbeitet werden soll, werden nicht beide *Bx out* Pins miteinander verbunden, sondern einer von diesen mit der externen LED. Alle Pins mit dem Senkrecht-Zeichen (umgedrehtes T) oder GND beschriftet sind können als Ground-Pin verwendet werden. Wenn ein Pin als Input genutzt werden soll, wird ein Jumper bei *Bx in* gesetzt und die Input-Quelle mit einem der BUF-Pins. 
