@@ -1,15 +1,15 @@
 # Gertboard Tutorial
 
-[Einleitung](#1)
-[Inbetriebnahme des Pi](#2)
-[Erste Programme mit Python](#3)
-[Gertboard](#4)
+[Einleitung](#1)  
+[Inbetriebnahme des Pi](#2)  
+[Erste Programme mit Python](#3)  
+[Gertboard](#4)  
 
-## 1. Einleitung
+## 1. Einleitung <a name="1"> </a>
 Der Raspberry Pi ist ein Mini-Computer, der vieles von dem, was ein normaler Computer auch kann: Er hat eine graphische Oberfläche1, einen Internetbrowser und andere Programme. 
 Es gibt aktuell drei Versionen des Pi, die Funktionen sind größtenteils gleich. Das neueste Modell hat auch WLAN und Bluetooth an Board.
 
-## 2. Inbetriebnahme des Pi
+## 2. Inbetriebnahme des Pi <a name="2"></a>
 Der Pi besitzt keine Festplatte oder anderweitige interne Speicher (außer den Arbeitsspeicher natürlich), weshalb wir einen „basteln“ mussten: Das ging ganz einfach mit einer SD-Karte die über mindestens 8GB verfügt.
 Als erstes haben wir das Betriebssystem für den Pi herunterladen, welches [hier](https://downloads.raspberrypi.org/raspbian_latest) verfügbar ist: Es heißt Raspbian und ist kostenlos. 
 Nun hatten wir eine Zip-Datei, die wir entpacken mussten: Jetzt haben wir anstatt der Zip Datei eine IMG Datei. 
