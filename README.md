@@ -223,9 +223,30 @@ Die eben schon erwähnten Dauerstrom-Pins befinden sich in den kleine Böcken J7
 ##### Verbindung mit dem Pi
 Um das Gertboard mit dem Raspberry Pi zu verbinden, muss das Gertboard auf die linken (Der Pi ist so gedreht, dass die Pins oben links liegen) 26 GPIO-Pins gesteckt werden. Bei B Modelen des Pi sind somit die vierzehn rechten Pins nicht mit dem Gertboard verbunden und auf sie kann somit nicht auf dem Gertboard zugegriffen werden. Damit die Buffer-Ausgänge auch Signale senden können müssen bei J7 (3,3V Dauerstrom) zwei der drei Pins miteinander Verbunden werden (am besten mit einem [Jumper](https://github.com/JayWee/Gertboard-Tutorial/blob/master/Shunt-Jumpers2-1383815114.jpg)).    <!---(Für die, die es interessiert: [Warum hier](#10)) -->  
 
-#### Arbeiten mit LEDs über die Buffer
+#### Arbeiten mit den LEDs und den Druckknöpfen über die Buffer
 Um auf die LEDs zuzugreifen muss erstmal eine Verbindung zwischen den GPIO-Pins (J2) und den Buffer-Eingangs-Pins (J3) hergestellt werden. Jetzt sollten alle LEDs rot leuchten.  
-Dann muss der Hardware gesagt werden wie welcher Bufferpin genutzt werden soll (Input/Output). Dafür müssen bei einem Output die beiden Pins, die mit *Bx out* (x ist die Nummer des gewählten Buffereingangs) beschriftet sind, am besten mit einem Jumper verbunden werden, bei einem Input mit *Bx in*. Beim aufstecken der Jumper, sollte die entsprechende LED ausgehen. Falls nicht, sollte dies spätestens beim starten des Programms passieren.
+Dann muss der Hardware gesagt werden wie welcher Bufferpin genutzt werden soll (Input/Output). Dafür müssen bei einem Output die beiden Pins, die mit *Bx out* (x ist die Nummer des gewählten Buffereingangs) beschriftet sind, am besten mit einem Jumper verbunden werden. Beim Aufstecken der Jumper, sollte die entsprechende LED ausgehen. Falls nicht, sollte dies spätestens beim starten des Programms passieren.  
+Um die Druckknöpfe zu verwenden, muss man über B1-3 darauf zugreifen und entgegen der Tatsache, dass es sich um einen Input handelt, auch einen Jumper bei *Bx out* plazieren (Im Programm müssen die entsprechenden GPIO-Pinsallerdings auf Input gestellt sein). Auf die LEDs der benutzten Knöpfe kann dann nicht mehr zugegriffen werden. Diese Leuchten jetzt beim Starten des Programms. Wenn dann einer der Knöpfe gedrückt wird, geht die entsprechende LED beim Gedrückt sein aus und beim Loslassen wieder an.
 
 #### Arbeiten mit externen Geräten über die Buffer
 Wenn mit externen Geräten oder LEDs gearbeitet werden soll, werden nicht beide *Bx out* Pins miteinander verbunden, sondern einer von diesen mit der externen LED. Alle Pins mit dem Senkrecht-Zeichen (umgedrehtes T) oder GND beschriftet sind können als Ground-Pin verwendet werden. Wenn ein Pin als Input genutzt werden soll, wird ein Jumper bei *Bx in* gesetzt und die Input-Quelle mit einem der BUF-Pins. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
