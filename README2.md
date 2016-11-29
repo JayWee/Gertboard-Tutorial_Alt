@@ -2,8 +2,10 @@
 
 1. **[Einleitung](#1)**  
 1. **[Inbetriebnahme des Pi](#2)**  
-  [Der erste Start](#7)
-1. **[Erste Programme mit Python](#3)**  
+  [Aufsetzten von Linux](#7)  
+  [Aufsetzten von Windows 10 IoT Core](#8)  
+1. **[Erste Programme mit Python über Linux](#3)**  
+1. **[Erste Programme mit C# über Windows](#9)**  
 1. **[Gertboard](#4)**  
   [Einführung](#5)  
   [Nutzung der Buffer](#6)  
@@ -13,15 +15,19 @@ Der Raspberry Pi ist ein Mini-Computer, der vieles von dem, was ein normaler Com
 Es gibt aktuell drei Versionen des Pi, die Funktionen sind größtenteils gleich. Das neueste Modell hat auch WLAN und Bluetooth an Board.
 
 ## 2. Inbetriebnahme des Pi <a name="2"></a>
-Der Pi besitzt keine Festplatte oder anderweitige interne Speicher (außer den Arbeitsspeicher natürlich), weshalb wir einen „basteln“ mussten: Das ging ganz einfach mit einer SD-Karte die über mindestens 8GB verfügt.
-Als erstes haben wir das Betriebssystem für den Pi herunterladen, welches [hier](https://downloads.raspberrypi.org/raspbian_latest) verfügbar ist: Es heißt Raspbian und ist kostenlos. 
-Nun hatten wir eine Zip-Datei, die wir entpacken mussten: Jetzt haben wir anstatt der Zip Datei eine IMG Datei. 
-Die SD-Karte haben nun in unseren Computer gesteckt um die IMG-Datei darauf zu installieren. 
+Der Pi besitzt keine eigene interne Festplatte oder sonstigen internen Speicher. Deshalb muss man ihm einen stellen. Dies geschieht in Form einer SD-Karte (ab dem Raspberry Pi 2 eine microSD-Karte) mit mindestens 8 GB Speicher (am besten Class 10, bei Windows IoT werden SD-Karten erst ab Class 4 unterstützt).  
+Es gibt zwei Betriebssysteme, die Hauptsächlich mit dem Pi benutzt werden. Vor allem ist dies Linux (Raspbian), welches eine vollständige Desktopoberfläche hat. Die Alternative ist Windows 10 IoT Core, welches allerding erst mit ab der 2 Version des Pi für diesen verfügbar ist). Dieses Betriebssystem bietet keine graphische Oberfläche, allerdings kann auf alle Funktion über ein anderen Rechner mit Windows zugegriffen werden. Ebenfalls ist es dann möglich mit [Visual Studio 2015 Community](https://www.visualstudio.com/de/), einem Compiler für diverse Sprachen(C/C#/C++/JavaScript/Visual Basic/Phython) von Microsoft, Remote-Debugging zu betreiben.
 
-#### Windows 
+### Aufsetzten von Linux <a name="7"></a>
+Als erstes muss eine Installationsdatei für Linux heruntergeladen werden, welches [hier](https://downloads.raspberrypi.org/raspbian_latest) verfügbar ist. Das letztendliche Linux nennt sich Raspbian und ist kostenlos. 
+Diese liegt in Form einer einer Zip-Datei, die entpackt werden muss. Anstatt der zip-Datei hat man jetzt eine IMG-Datei. 
+Die Sd-Karte muss nun mit dem Computer verbunden werden, um die IMG-Datei drauf zu spielen. 
+
+<!-- To Do: Pronomen ersetzten -->
+##### Windows 
 Wir haben nun das Program [Win32DiskImager](http://sourceforge.net/projects/win32diskimager/). Wieder erhalten wir eine Zip-Datei die wir entpacken und das Programm ausführen. Mit Hilfe des Programmes haben wir Raspian auf dem Pi installiert. 
 
-#### Mac 
+##### Mac 
 Anschließend haben wir es mit einem Mac installiert: Als erstes haben wir sichergestellt, dass die SD-Karte im Format MS-DOS (FAT) formatiert ist:  Dafür nutzten wir das Festplattendienstprogramm. Dort klickt man auf die SD-Karte an der linken Seite: Wichtig ist das man auf die obere klickt, nicht die untere.    
 Jetzt wählt man aus der oberen Leiste Löschen aus und dann einen Namen (Ohne Titel), das Format (MS-DOS-Dateisytem (FAT)), und das Schema (GUID). Nun klickt man auf Löschen. 
 Jetzt merken wir uns die Zahl die unten rechts im Feld Gerät steht diskx.
@@ -30,15 +36,15 @@ Statt `path_of_your_image.img` geben wir den Pfad der IMG Datei ein. Diesen kön
 Schlägt der Befehl fehl, kann man statt `rdisk` auch nur `disk` verwenden.
 Ist der Befehl ausgeführt, kann die SD-Karte ausgeworfen werden und wir stecken sie in den Pi. 
 
-### Der erste Start <a name="7"></a>
+#### Der erste Start <a name="7"></a>
 Dann  haben wir die SD-Karte, auf der das Raspbian installiert ist, in den Pi gesteckt und  über ein Micro-USB-Kabel mit Strom versorgt. 
 Nun beginnt der Pi den Startvorgang. In der Zeit können wir ein LAN-Kabel zur Versorgung mit Internet anschließen. (die Pis der Schule müssen nur angeschlossen werden, sie haben schon Internet. Eigene Pi's müssen erst registriert werden.
 
-#### Zugriff auf den Pi 
+##### Zugriff auf den Pi 
 Der Pi ist nach etwa 2 Minuten bereit um mit ihm zu arbeiten und auf ihn zuzugreifen. Das machen wir mittels SSH:
 ***Das Herstellen einer SSH-Verbindung zum Rasperry Pi ist sehr nützlich zum Ausführen von Befehlen. Man kann sich dann das anschließen von Monitor und Tastatur an den Pi sparen und vom eigenem Laptop oder Schulrecher aus den Pi steuern.***
 
-#### Verbindung aufbauen
+##### Verbindung aufbauen
 
 ##### Linux, macOS
 
@@ -51,11 +57,26 @@ ip ist die Adresse unter der wir den Pi erreichen. Sie finden wir zuhause über 
 Wir sind nun auf dem Raspberry Pi eingewehlt und können Befehle und Programme direkt auf dem Pi ausführen. 
 Falls wir die Verbindung beenden wollen senden wir entweder den Befehl exit oder schließen das Terminal.
 
-## 3. Erste Programme mit Phyton <a name="3"></a>
+### Aufsetzten von Windows 10 IoT Core
+Windwos 10 Iot Core ist ein kostenloses Betriebssystem für Kleingeräte von Microsoft ohne graphische richtige Oberfläche (es gibt keinen Desktop für klassische Programme, man kann allerdings Netzwerkeinstellungen auch ohne Konsole machen). Im Gegensatz zum normalen Windows ist IoT Core allerdings darauf spezialisiert LEDs, Sensoren und Motoren anzusteuern. Ebenfalls anders ist, das man per Remote Connection einiges mehr machen kann, als über die eigene Oberfläche. Deshalb kann Windows IoT Core auch mit Geräten genutzt werden, die keinen Bildschirmausgang haben.
+
+#### Installation auf der SD-Karte
+Da IoT Core nur  mit Raspberrys ab der zweiten Generation funktioniert, brauch man auf jeden Fall eine microSD-Karte. Diese muss mindestens 8 GB Speicher haben. Die Daten die noch auf dieser sind werden beim Installieren von IoT Core gelöscht. 
+Zum Installieren auf der SD-Karte wird das Programm *[Windows 10 IoT Dashboard](https://developer.microsoft.com/en-us/windows/iot/GetStarted)* benötigt. Die verlinkte Seite enthält ebenfalls eine Anleitung zum Installieren von IoT Core.  
+Nach dem installieren dieses Programms muss es geöffnet werden. Unter Gerätetyp dann den Raspberry auswählen. Bei Betriebssystembuild "Windows 10 IoT Core" ausgewählt lassen und bei Laufwerk die SD-Karte auswählen. (Meistens hat das Programm von vornherein schon das Richtige ausgewählt.) Bei Gerätename kann ein beliebiger Name eingesetzt werden. Mit dem gesetzten Administratorpasswort kann man sich dann per Benutzname "administrator" und dem gewählten passwort einloggen. Zum installieren muss dan noch die Lizenzbedingung akzeptiert werden und dann unten rechts auf den Button gedrückt werden.  
+
+##### Übername von WLAN-Profilen
+Wenn auf dem Instalierendem Rechner WLAN-Profile bestehen und entweder ein Model ab Stufe 3 des Raspberrys verwendet wird, oder eein WLAN-Adapter per USB verbunden wurde, können diese dann direkt, oben rechts bei der Installation, mit ünernommen werden. So meldet sich der Pi beim ersten mal Booten direkt per WLAN an und es kann dann auch direkt über siese Verbindung auf ihn zugegriffen werden.  
+
+#### Zugreifen auf den Pi
+Dafür braucht man wieder das Programm *Windows 10 IoT Dashboard*. In diesem geht man auf den Reiter "*Meine Geräte*". Dort wird der Raspberry dann mit dem gegebenem Namen, seinem Typ und der IP-Adresse angezeigt. 
+
+<!-- To Do: Pronomen ersetzten -->
+## 3. Erste Programme mit Phyton über Linux <a name="3"></a>
 Es ist uns nun möglich Programme direkt auf dem Pi zu schreiben in dem wir die Programmiersprache Python benutzen. 
 Man kann aber auch auf dem Mac, auf dem wir auch das Terminal ausführen, Programme schreiben.
 (Ich empfehle, zum Schreiben von Programmen Xcode zu benutzen, dieses Programm ist kostenfrei im [Mac-AppStore](https://itunes.apple.com/de/app/xcode/id497799835?mt=12) verfügbar. Auch TextWrangler eignet sich, ist aber ein wenig komplizierter. Im folgenen wird sich auf Xcode bezogen. )
-![alt text](bild)  
+
   
 ### Anlegen eines Dokuments auf dem Pi  
 Wir öffnen das Terminal und führen abermals den Befehl ssh pi@ip durch. Nun loggen wir uns mit dem Passwort ein und geben den Befehl nano Test.py ein. Jetzt öffnet sich der Python-Editor, mit dem man die Programme schreiben kann. Jetzt können wir hier den Code eigegben.
@@ -63,7 +84,7 @@ Wir öffnen das Terminal und führen abermals den Befehl ssh pi@ip durch. Nun lo
 ### Das erste Programm 
 Wir wollen eine LED zum leuchten bringen. Dafür scließen wir eine LED über ein Jumper-Kabel und einen Widerstand am Pi an. Die Pins die wir benutzen sind der Ground-Pin und Pin 18
 
-Als erstes müssen wir verschiedene Dinge importieren: Die Zeit (time), die Steuerung für die Pins (RPi.GPIO) und das Einlesen der Tastatur (curses). Das geschieht mit dem Befehl import.[Befehl].
+Als erstes müssen wir verschiedene Dinge importieren: Die Zeit (time), die Steuerung für die Pins (RPi.GPIO)<!-- und das Einlesen der Tastatur (curses) -->. Das geschieht mit dem Befehl `import Befehl`.
 
 #### Programme schreiben 
 Der Anfang des Programmes sieht dann so aus:  
@@ -105,38 +126,46 @@ GPIO.output(18,GPIO.HIGH)
 time.sleep(0.5)  
 GPIO.output(18,GPIO.LOW)  
 time.sleep(0.5)  
+
 GPIO.output(18,GPIO.HIGH)  
 time.sleep(0.5)  
 GPIO.output(18,GPIO.LOW)  
 time.sleep(0.5)  
+
+GPIO.output(18,GPIO.HIGH)  
+time.sleep(0.5)  
+GPIO.output(18,GPIO.LOW)  
+time.sleep(1.5)  
+
+GPIO.output(18,GPIO.HIGH)  
+time.sleep(1.5)  
+GPIO.output(18,GPIO.LOW)  
+time.sleep(0.5)  
+
+GPIO.output(18,GPIO.HIGH)  
+time.sleep(1.5)  
+GPIO.output(18,GPIO.LOW)  
+time.sleep(0.5)  
+
+GPIO.output(18,GPIO.HIGH)  
+time.sleep(1.5)  
+GPIO.output(18,GPIO.LOW)  
+time.sleep(1.5)  
+
 GPIO.output(18,GPIO.HIGH)  
 time.sleep(0.5)  
 GPIO.output(18,GPIO.LOW)  
 time.sleep(0.5)  
-GPIO.output(18,GPIO.HIGH)  
-time.sleep(1)  
-GPIO.output(18,GPIO.LOW)  
-time.sleep(1)  
-GPIO.output(18,GPIO.HIGH)  
-time.sleep(1)  
-GPIO.output(18,GPIO.LOW)  
-time.sleep(1)  
-GPIO.output(18,GPIO.HIGH)  
-time.sleep(1)  
-GPIO.output(18,GPIO.LOW)  
-time.sleep(1)  
+
 GPIO.output(18,GPIO.HIGH)  
 time.sleep(0.5)  
 GPIO.output(18,GPIO.LOW)  
 time.sleep(0.5)  
+
 GPIO.output(18,GPIO.HIGH)  
 time.sleep(0.5)  
 GPIO.output(18,GPIO.LOW)  
-time.sleep(0.5)  
-GPIO.output(18,GPIO.HIGH)  
-time.sleep(0.5)  
-GPIO.output(18,GPIO.LOW)  
-time.sleep(0.5)  
+time.sleep(3.5)  
 ```
 
 Um daraus eine Schleife zu machen setzt kann man einen Counter einsetzen. Am Anfang des Programmes `count = 0` setzen und dann `while (count < x):` das sieht dann so aus:  
