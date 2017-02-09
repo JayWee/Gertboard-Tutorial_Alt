@@ -53,7 +53,7 @@ macOS basiert auf Linux und da Linux einen SSH-Klienten mitbringt, gelten diese 
 Man öffnet das Terminal und führt folgenen Befehlen aus:   
 ssh pi@ip  
 
-ip ist die Adresse unter der wir den Pi erreichen. Man findet sie zuhause über den Router und in der Schule mittels iSurf. 
+ip ist die Adresse unter der man den Pi erreicht. Man findet sie zuhause über den Router und in der Schule mittels iSurf. 
 Man ist nun auf dem Raspberry Pi eingewehlt und kann Befehle und Programme direkt auf dem Pi ausführen. 
 Falls man die Verbindung beenden möchte, sendet man entweder den Befehl exit oder schließt das Terminal.
 
@@ -74,12 +74,12 @@ Dafür braucht man wieder das Programm *Windows 10 IoT Dashboard*. In diesem geh
 <!-- To Do: Pronomen ersetzten -->
 ## 3. Erste Programme mit Phyton über Linux <a name="3"></a>
 Es ist nun möglich Programme direkt auf dem Pi zu schreiben in dem man die Programmiersprache Python benutzt. 
-Man kann aber auch auf dem Mac, auf dem wir auch das Terminal ausführen, Programme schreiben.
+Man kann aber auch auf dem Mac, auf dem man auch das Terminal ausführt, Programme schreiben.
 (Ich empfehle, zum Schreiben von Programmen Xcode zu benutzen, dieses Programm ist kostenfrei im [Mac-AppStore](https://itunes.apple.com/de/app/xcode/id497799835?mt=12) verfügbar. Auch TextWrangler eignet sich, ist aber ein wenig komplizierter.)
 
   
 ### Anlegen eines Dokuments auf dem Pi  
-Wir öffnen das Terminal und führen abermals den Befehl ssh pi@ip durch. Nun loggen wir uns mit dem Passwort ein und geben den Befehl nano Test.py ein. Jetzt öffnet sich der Python-Editor, mit dem man die Programme schreiben kann. Jetzt können wir hier den Code eigegben.
+Man öffnet das Terminal und führt abermals den Befehl ssh pi@ip aus. Nun loggt man sich mit dem Passwort ein und gibt den Befehl nano Test.py ein. Jetzt öffnet sich der Python-Editor, mit dem man die Programme schreiben kann. Jetzt kann man hier den Code eigegben.
 
 ### Das erste Programm 
 Möchte man eine LED zum leuchten bringen, schließt man eine LED über ein Jumper-Kabel und einen Widerstand am Pi an. Die Pins die benutzt werden, sind der Ground-Pin und Pin 18. 
