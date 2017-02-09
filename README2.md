@@ -25,23 +25,23 @@ Die Sd-Karte muss nun mit dem Computer verbunden werden, um die IMG-Datei drauf 
 
 <!-- To Do: Pronomen ersetzten -->
 ##### Windows 
-Wir haben nun das Program [Win32DiskImager](http://sourceforge.net/projects/win32diskimager/). Wieder erhalten wir eine Zip-Datei die wir entpacken und das Programm ausführen. Mit Hilfe des Programmes haben wir Raspian auf dem Pi installiert. 
+Man installiert nun das Program [Win32DiskImager](http://sourceforge.net/projects/win32diskimager/). Die geladene Datei wird anschließend entpackt und ausgeführt. Mit Hilfe des Programmes installiert man Raspian auf dem Pi. 
 
 ##### Mac 
-Anschließend haben wir es mit einem Mac installiert: Als erstes haben wir sichergestellt, dass die SD-Karte im Format MS-DOS (FAT) formatiert ist:  Dafür nutzten wir das Festplattendienstprogramm. Dort klickt man auf die SD-Karte an der linken Seite: Wichtig ist das man auf die obere klickt, nicht die untere.    
+Falls man Raspian mit einem Mac installiert: Als erstes muss sichergestellt werden, dass die SD-Karte im Format MS-DOS (FAT) formatiert ist:  Dafür benutzt man das Festplattendienstprogramm. Dort klickt man auf die SD-Karte an der linken Seite: Wichtig ist, dass man auf die obere klickt, nicht die untere.    
 Jetzt wählt man aus der oberen Leiste Löschen aus und dann einen Namen (Ohne Titel), das Format (MS-DOS-Dateisytem (FAT)), und das Schema (GUID). Nun klickt man auf Löschen. 
-Jetzt merken wir uns die Zahl die unten rechts im Feld Gerät steht diskx.
-Anschließend öffnen wir das Terminal (Programme -> Terminal) und geben den Befehl: `sudo dd bs=1m if=path_of_your_image.img of=/dev/rdiskx` ein.
-Statt `path_of_your_image.img` geben wir den Pfad der IMG Datei ein. Diesen können wir aus dem Finder kopiert. Dafür wählen wir die IMG-Datei aus und rechts-klicken auf die Datei und wählen Informationen aus. Für *x* setzen wir die Zahl aus dem Festpalttendienstprogramm ein und führen den Befehl aus. 
+Jetzt merkt man sich die Zahl die unten rechts im Feld Gerät steht: `diskx`.
+Anschließend öffnet man das Terminal (Programme -> Terminal) und gibt den Befehl: `sudo dd bs=1m if=path_of_your_image.img of=/dev/rdiskx` ein.
+Statt `path_of_your_image.img` gibt man den Pfad der IMG Datei ein. Diese kann man aus dem Finder kopieren. Dafür wählt man die IMG-Datei aus und rechts-klickt auf die Datei und wählt Informationen aus. Für *x* setzt man die Zahl aus dem Festpalttendienstprogramm ein und führt den Befehl aus. 
 Schlägt der Befehl fehl, kann man statt `rdisk` auch nur `disk` verwenden.
-Ist der Befehl ausgeführt, kann die SD-Karte ausgeworfen werden und wir stecken sie in den Pi. 
+Ist der Befehl ausgeführt, kann die SD-Karte ausgeworfen und in den Pi gesteckt werden. 
 
 #### Der erste Start <a name="7"></a>
-Dann  haben wir die SD-Karte, auf der das Raspbian installiert ist, in den Pi gesteckt und  über ein Micro-USB-Kabel mit Strom versorgt. 
-Nun beginnt der Pi den Startvorgang. In der Zeit können wir ein LAN-Kabel zur Versorgung mit Internet anschließen. (die Pis der Schule müssen nur angeschlossen werden, sie haben schon Internet. Eigene Pi's müssen erst registriert werden.
+Jetzt steckt man die SD-Karte, auf der das Raspbian installiert ist, in den Pi, der über ein Micro-USB-Kabel mit Strom versorgt wird.  
+Nun beginnt der Pi den Startvorgang. In der Zeit sollte man ein LAN-Kabel zur Versorgung mit Internet anschließen. (die Pis der Schule müssen nur angeschlossen werden, sie haben schon Internet. Eigene Pi's müssen erst registriert werden.)
 
 ##### Zugriff auf den Pi 
-Der Pi ist nach etwa 2 Minuten bereit um mit ihm zu arbeiten und auf ihn zuzugreifen. Das machen wir mittels SSH:
+Der Pi ist nach etwa 2 Minuten bereit um mit ihm zu arbeiten und auf ihn zuzugreifen. Das ist mittels SSH möglich:
 ***Das Herstellen einer SSH-Verbindung zum Rasperry Pi ist sehr nützlich zum Ausführen von Befehlen. Man kann sich dann das anschließen von Monitor und Tastatur an den Pi sparen und vom eigenem Laptop oder Schulrecher aus den Pi steuern.***
 
 ##### Verbindung aufbauen
@@ -50,12 +50,12 @@ Der Pi ist nach etwa 2 Minuten bereit um mit ihm zu arbeiten und auf ihn zuzugre
 
 macOS basiert auf Linux und da Linux einen SSH-Klienten mitbringt, gelten diese Schritte auch für macOS.  
 
-Wir öffnen das Terminal und führen folgenen Befehlen aus:   
+Man öffnet das Terminal und führt folgenen Befehlen aus:   
 ssh pi@ip  
 
-ip ist die Adresse unter der wir den Pi erreichen. Sie finden wir zuhause über den Router und in der Schule mittels  
-Wir sind nun auf dem Raspberry Pi eingewehlt und können Befehle und Programme direkt auf dem Pi ausführen. 
-Falls wir die Verbindung beenden wollen senden wir entweder den Befehl exit oder schließen das Terminal.
+ip ist die Adresse unter der wir den Pi erreichen. Man findet sie zuhause über den Router und in der Schule mittels iSurf. 
+Man ist nun auf dem Raspberry Pi eingewehlt und kann Befehle und Programme direkt auf dem Pi ausführen. 
+Falls man die Verbindung beenden möchte, sendet man entweder den Befehl exit oder schließt das Terminal.
 
 ### Aufsetzten von Windows 10 IoT Core
 Windwos 10 Iot Core ist ein kostenloses Betriebssystem für Kleingeräte von Microsoft ohne graphische richtige Oberfläche (es gibt keinen Desktop für klassische Programme, man kann allerdings Netzwerkeinstellungen auch ohne Konsole machen). Im Gegensatz zum normalen Windows ist IoT Core allerdings darauf spezialisiert LEDs, Sensoren und Motoren anzusteuern. Ebenfalls anders ist, das man per Remote Connection einiges mehr machen kann, als über die eigene Oberfläche. Deshalb kann Windows IoT Core auch mit Geräten genutzt werden, die keinen Bildschirmausgang haben.
@@ -73,18 +73,18 @@ Dafür braucht man wieder das Programm *Windows 10 IoT Dashboard*. In diesem geh
 
 <!-- To Do: Pronomen ersetzten -->
 ## 3. Erste Programme mit Phyton über Linux <a name="3"></a>
-Es ist uns nun möglich Programme direkt auf dem Pi zu schreiben in dem wir die Programmiersprache Python benutzen. 
+Es ist nun möglich Programme direkt auf dem Pi zu schreiben in dem man die Programmiersprache Python benutzt. 
 Man kann aber auch auf dem Mac, auf dem wir auch das Terminal ausführen, Programme schreiben.
-(Ich empfehle, zum Schreiben von Programmen Xcode zu benutzen, dieses Programm ist kostenfrei im [Mac-AppStore](https://itunes.apple.com/de/app/xcode/id497799835?mt=12) verfügbar. Auch TextWrangler eignet sich, ist aber ein wenig komplizierter. Im folgenen wird sich auf Xcode bezogen. )
+(Ich empfehle, zum Schreiben von Programmen Xcode zu benutzen, dieses Programm ist kostenfrei im [Mac-AppStore](https://itunes.apple.com/de/app/xcode/id497799835?mt=12) verfügbar. Auch TextWrangler eignet sich, ist aber ein wenig komplizierter.)
 
   
 ### Anlegen eines Dokuments auf dem Pi  
 Wir öffnen das Terminal und führen abermals den Befehl ssh pi@ip durch. Nun loggen wir uns mit dem Passwort ein und geben den Befehl nano Test.py ein. Jetzt öffnet sich der Python-Editor, mit dem man die Programme schreiben kann. Jetzt können wir hier den Code eigegben.
 
 ### Das erste Programm 
-Wir wollen eine LED zum leuchten bringen. Dafür scließen wir eine LED über ein Jumper-Kabel und einen Widerstand am Pi an. Die Pins die wir benutzen sind der Ground-Pin und Pin 18
+Möchte man eine LED zum leuchten bringen, schließt man eine LED über ein Jumper-Kabel und einen Widerstand am Pi an. Die Pins die benutzt werden, sind der Ground-Pin und Pin 18. 
 
-Als erstes müssen wir verschiedene Dinge importieren: Die Zeit (time), die Steuerung für die Pins (RPi.GPIO)<!-- und das Einlesen der Tastatur (curses) -->. Das geschieht mit dem Befehl `import Befehl`.
+Als erstes müssen verschiedene Dinge importiert werden: Die Zeit (time), die Steuerung für die Pins (RPi.GPIO)<!-- und das Einlesen der Tastatur (curses) -->. Das geschieht mit dem Befehl `import Befehl`.
 
 #### Programme schreiben 
 Der Anfang des Programmes sieht dann so aus:  
@@ -93,14 +93,14 @@ import RPi.GPIO as GPIO
 import time  
 ```
   
-Nun definieren wir die Pins als Ausgang-Pins und den GPIO Modus:
+Nun definiert man die Pins als Ausgang-Pins und den GPIO Modus:
 ```
 GPIO.setmode(GPIO.BCM)  
 GPIO.setwarnings(False)  
 GPIO.setup(18,GPIO.OUT) #LED  
 ```
 
-Um die LED zu aktivieren setzen wir den output auf HIGH:
+Um die LED zu aktivieren setzt man den output auf HIGH:
 ```
 GPIO.output(18,GPIO.HIGH)  
 time.sleep(5) #wartet fuenf Sekunden  
@@ -108,9 +108,9 @@ GPIO.output(18,GPIO.LOW) #schaltet die LED wieder aus
 GPIO.cleanup() #setzt die Steuerung zurueck  
 ```
 
-Mit crtl-x verlassen wir den Editor: Erst *crtl-x* dann *y* und dann *Enter* drücken. Nun geben wir den Befehl `sudo phyton Test.py` ein um das Programm auszuführen.
+Mit crtl-x verlässt man den Editor: Erst *crtl-x* dann *y* und dann *Enter* drücken. Nun gibt man den Befehl `sudo phyton Test.py` ein, um das Programm auszuführen.
 
-Jetzt habe ich eine Abfolge von LED leuchten erstellt:	
+Jetzt kann man eine Abfolge von LED leuchten erstellt:	
 ```
 GPIO.setup(17,GPIO.OUT) #rot  
 GPIO.setup(18,GPIO.OUT) #gelb   
@@ -175,7 +175,7 @@ while (count < x):
 ```
 darunter dann den Inhalt der Schleife setzen. Diese ist jetzt unendlich. Wenn man ans Ende ein `counter += 1` setzt wird der Counter nach jeden Durchlauf um 1 erhöht und das Programm endet nach x Durchläufen. 
 
-`GPIO.setup(2,GPIO.IN)` definiert Pin 2 als Eingang. Das gegegebn kann man mit der Funktion `if GPIO.input(2) == GPIO.HIGH` und einem Schlater eine Ampel bauen. Das habe ich getan. Mit `print "text"` habe ich die einzelnen Schritte in der Konsole aus beschrieben.
+`GPIO.setup(2,GPIO.IN)` definiert Pin 2 als Eingang. Das gegegebn kann man mit der Funktion `if GPIO.input(2) == GPIO.HIGH` und einem Schlater eine Ampel bauen. Mit `print "text"` können die einzelnen Schritte in der Konsole beschrieben werden, um ein debugging möglich machen kann.
 ```
 import RPi.GPIO as GPIO
 import time
